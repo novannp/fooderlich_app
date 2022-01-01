@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/models/tab_manager.dart';
-import 'package:fooderlich/screens/grocery_screen.dart';
+import 'models/tab_manager.dart';
+import 'screens/grocery_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/explore_screen.dart';
