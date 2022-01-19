@@ -4,12 +4,14 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 import '../models/models.dart';
+import '../components/grocery_tile.dart';
 
 class GroceryItemScreen extends StatefulWidget {
   final Function(GroceryItem) onCreate;
   final Function(GroceryItem) onUpdate;
   final GroceryItem? originalItem;
   final bool isUpdating;
+
   const GroceryItemScreen({
     Key? key,
     required this.onCreate,
@@ -63,7 +65,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.check))],
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.check))],
         elevation: 0.0,
         title: Text(
           'Grocery Item',
@@ -86,14 +88,27 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
             const SizedBox(
               height: 10.0,
             ),
-            buildQuantityField()
-            // TODO: 19: Add Grocery Tile],
+            buildQuantityField(),
+            GroceryTile(
+              item: GroceryItem(
+                id: 'previewMode',
+                name: _name,
+                importance: _importance,
+                color: _currentColor,
+                quantity: _currentSliderValue,
+                date: DateTime(
+                  _dueDate.year,
+                  _dueDate.month,
+                  _dueDate.day,
+                  _timeOfDay.hour,
+                  _timeOfDay.minute,
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
-
-    // ignore: dead_code
   }
 
   Widget buildNameField() {

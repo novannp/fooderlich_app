@@ -11,8 +11,8 @@ void main() {
 class Fooderlich extends StatelessWidget {
   Fooderlich({Key? key}) : super(key: key);
 
-  @override
   final theme = FooderlichTheme.light();
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
